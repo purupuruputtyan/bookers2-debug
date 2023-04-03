@@ -22,6 +22,10 @@ class User < ApplicationRecord
 
   #閲覧機能のアソシエーション
   has_many :view_counts, dependent: :destroy
+  
+  #グループ機能
+  has_many :group_users
+  has_many :groups, through: :group_users
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true , presence: true
   validates :introduction, length: { maximum: 50 }
