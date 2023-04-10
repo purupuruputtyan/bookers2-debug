@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   #閲覧機能のアソシエーション
   has_many :view_counts, dependent: :destroy
-  
+
   #グループ機能
   has_many :group_users
   has_many :groups, through: :group_users
@@ -58,6 +58,13 @@ class User < ApplicationRecord
       @user = User.where("name LIKE?","%#{word}%")
     else
       @user = User.all
+    end
+  end
+
+  def self.guest
+    find_or_create_by!(name: 'guestuser', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
     end
   end
 
