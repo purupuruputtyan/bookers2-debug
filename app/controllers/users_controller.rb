@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     end
   end
 
-    def search
+  def search
     @user = User.find(params[:user_id])
     @books = @user.books
     @book = Book.new
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   end
 
   def ensure_guest_user
-    @user -User.find(params[:id])
+    @user = User.find(params[:id])
     if @user.name == "guestuser"
       redirect_to user_path(current_user), notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
