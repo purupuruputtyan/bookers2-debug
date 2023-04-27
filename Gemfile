@@ -61,3 +61,5 @@ gem 'pry-byebug'
 gem 'jquery-rails'
 
 gem 'dotenv-rails'
+
+gem "simple_calendar", "~> 2.4"
